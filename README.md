@@ -7,6 +7,6 @@
 ## 글 작성
 ![Alt Text](gifs/글작성.gif)
 ## 친구관리
-![Alt Text](gifs/.gif)
+![Alt Text](gifs/친구추가.gif)
 ## 멸종위기종 등록
 ![Alt Text](gifs/멸종위기종_추가.gif)
