@@ -1,0 +1,143 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title myblog
+        include menu.pug
+
+        link(rel='stylesheet', href='/css/style1.css')
+
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet")
+
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Orbit&display=swap" rel="stylesheet")
+
+        //부트스트랩 사용
+        link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9", crossorigin="anonymous")
+        script(src="https://code.jquery.com/jquery-3.6.4.min.js")
+        script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js")
+    body 
+        div.titlename.text-center
+
+            //내 블로그인 경우
+            if user !=null && user.userid == author
+                h1.display-4.mb-4 My Blog
+            else
+                h1.display-4.mb-4= author + ' 님 블로그'
+
+        .row
+            .col-md-12
+                .row
+                    .col-md-3 
+                        .mb-3.text-center
+                            strong 친구 목록
+                        //친구가 빈 문자열, 친구가 없는 경우
+                        if (friends.length === 0)
+                                strong 아직 친구가 없습니다
+                        else
+                            table.table.table-sm
+                                thead
+                                    tr
+                                        th 아이디
+                                tbody
+                                    each name in friends
+                                        tr
+                                            td= name 
+
+                    .col-md-8
+                        .jumbotron
+                            h2 글 목록
+                            .table_form
+                                table.table
+                                    thead
+                                        tr
+                                            th(scope="col") 글 제목
+                                            th(scope="col") 작성일
+                                    tbody
+                                        each item in data
+                                            //post에서 해당 글쓴이가 쓴 경우만
+                                            if(author == item.author)
+                                                tr
+                                                    td: a(href=`/content/${item._id}`) #{item.title}
+                                                    td= item.date
+                                                    //해당 유저인 경우만 삭제
+                                                    if user != null && user.userid == author
+                                                        //삭제 버튼
+                                                        td: button.delete.btn.btn-outline-danger(data-id=item._id) 삭제
+                                                    
+                            //해당 유저인 경우만 글쓰기 가능
+                            if user != null && user.userid == author
+                                button.write.btn.btn-primary(type="submit") 글쓰기
+                            //아닌 경우 중 친구목록에 없는 경우
+                            if user != null && user.userid != author && !(myfriends.includes(author))
+                                //친구추가 버튼
+                                td: button.add.btn.btn-outline-danger(data-id=userResult._id, data-new=author) 친구추가
+                                     
+
+                    ol-md-2i
+        
+        
+        script(src="https://code.jquery.com/jquery-3.6.4.min.js")
+        script.
+            //글쓰기 버튼 클릭 함수 정의
+            $('.write').click(function(e) {
+                console.log('추가!'); 
+                    $.ajax({
+                        type: 'get',
+                        url: '/enter',
+                    }).done(function(result) {
+                        location.href = '/enter';
+                    }).fail(function(xhr, textStatus, errorThrown) {
+                        // 응답에 실패했을 때
+                        console.log('글쓰기 실패');
+                        console.log(xhr, textStatus, errorThrown);
+                    });
+                    
+            });
+            //친구추가 버튼 클릭 함수 정의
+            $('.add').click(function(e) {
+                console.log('추가!'); 
+                    let sid = e.target.dataset.id;
+                    let new_f = e.target.dataset.new;
+                    let item = $(this);
+                    $.ajax({
+                        type: 'post',
+                        url: '/add_friend',
+                        data: {_id: sid, new_friend: new_f}
+                    }).done(function(result) {
+                        // 응답에 성공했을 때
+                        location.reload();
+                    }).fail(function(xhr, textStatus, errorThrown) {
+                        // 응답에 실패했을 때
+                        console.log('친구 추가 실패');
+                        console.log(xhr, textStatus, errorThrown);
+                    });
+                    
+            });
+
+            //삭제 버튼 클릭 함수 정의
+            $('.delete').click(function(e) {
+                console.log('추가!'); 
+                    let sid = e.target.dataset.id;
+                    let item = $(this);
+                    $.ajax({
+                        type: 'post',
+                        url: '/delete',
+                        data: {_id: sid}
+                    }).done(function(result) {
+                        // 응답에 성공했을 때
+                        item.parent('td').parent('tr').remove();
+                        location.reload();
+                    }).fail(function(xhr, textStatus, errorThrown) {
+                        // 응답에 실패했을 때
+                        console.log('삭제 실패');
+                        console.log(xhr, textStatus, errorThrown);
+                    });
+                    
+            });
+    
+

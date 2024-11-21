@@ -1,0 +1,42 @@
+/* table.pug의 css */
+
+/* 네비게이션 색 변경 */
+.container-fluid {
+    background-color: #323754;
+}
+
+/* 네비게이션 텍스트 색상 변경 */
+.navbar-brand,
+.navbar-nav .nav-link {
+  color: white !important;
+}
+
+/* 드롭다운 메뉴 텍스트 색상 변경 */
+.dropdown-item {
+  color: #323754 !important;
+}
+
+/* 네비게이션 폰트 설정 */
+.navbar {
+    font-family: 'Black Han Sans', sans-serif;
+}
+
+/* table의 제목 설정 */
+.titlename{
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 40px;
+    margin: 40px;
+}
+
+/* 회원 이름 텍스트 설정*/
+.information {  
+    font-family: 'Orbit', sans-serif;
+    font-size: 30px;
+    margin: 40px;
+}
+
+/* 테이블 설정 */
+.table_form {
+    border: 1px solid black;
+    margin: 40px;
+}

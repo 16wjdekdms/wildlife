@@ -1,0 +1,112 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Document
+
+        include menu.pug
+
+        link(rel='stylesheet', href='/css/style5.css')
+
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet")
+
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Orbit&display=swap" rel="stylesheet")
+
+        //부트스트랩 사용
+        link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9", crossorigin="anonymous")
+        script(src="https://code.jquery.com/jquery-3.6.4.min.js")
+        script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js")
+    body
+        //제목
+        div.titlename
+            p 친구 리스트
+        hr
+        div.background-container
+            //친구
+            div.information
+                p=userid+ '님의 친구리스트' 
+            
+            //친구 리스트 테이블
+            .table_form
+                table.table
+                    thead
+                        tr
+                            th(scope="col") 아이디
+                            th 블로그
+                    tbody
+                        each name in friends
+                            tr
+                                td= name 
+                                td.blog_link: a(href=href=`/f_blog/${name}`) #{name}님의 blog
+                                //친구삭제 버튼
+                                td: button.f_delete.btn.btn-outline-danger(data-id=userResult._id, data-new=name) 친구 삭제
+        hr
+        div.background-container
+            //친구
+            div.information
+                p=userid+ '님 친구 가능 리스트' 
+            
+            //친구 리스트 테이블
+            .table_form
+                table.table
+                    thead
+                        tr
+                            th(scope="col") 아이디
+                            th 추가
+                    tbody
+                        each item in data
+                            tr
+                                //내 account가 아니고 친구목록에 없는 경우
+                                if userid != item.userid && !(friends.includes(item.userid))
+                                    td= item.userid 
+                                    //친구추가 버튼
+                                    td: button.add.btn.btn-outline-danger(data-id=userResult._id, data-new=item.userid) 친구추가
+        
+        script(src="https://code.jquery.com/jquery-3.6.4.min.js")
+        script.
+            //버튼 클릭 함수 정의
+            $('.add').click(function(e) {
+                    let sid = e.target.dataset.id;
+                    let new_f = e.target.dataset.new;
+                    let item = $(this);
+                    $.ajax({
+                        type: 'post',
+                        url: '/add_friend',
+                        data: {_id: sid, new_friend: new_f}
+                    }).done(function(result) {
+                        // 응답에 성공했을 때
+                        location.reload();
+                    }).fail(function(xhr, textStatus, errorThrown) {
+                        // 응답에 실패했을 때
+                        console.log('친구 추가 실패');
+                        console.log(xhr, textStatus, errorThrown);
+                    });
+                    
+            });
+            //버튼 클릭 함수 정의
+            $('.f_delete').click(function(e) {
+                    console.log('삭제'); 
+                    let sid = e.target.dataset.id;
+                    let f_delete = e.target.dataset.new;
+                    let item = $(this);
+                    $.ajax({
+                        type: 'post',
+                        url: '/delete_friend',
+                        data: {_id: sid, delete_friend: f_delete}
+                    }).done(function(result) {
+                        // 응답에 성공했을 때
+                        location.reload();
+                    }).fail(function(xhr, textStatus, errorThrown) {
+                        // 응답에 실패했을 때
+                        console.log('친구 삭제 실패');
+                        console.log(xhr, textStatus, errorThrown);
+                    });
+                    
+            });
+
+        

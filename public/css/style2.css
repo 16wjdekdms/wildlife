@@ -1,0 +1,35 @@
+/* form.pug의 css*/
+
+/* 네비게이션 색 변경 */
+.container-fluid {
+    background-color: #323754;
+}
+
+/* 네비게이션 텍스트 색상 변경 */
+.navbar-brand,
+.navbar-nav .nav-link {
+  color: white !important;
+}
+
+/* 드롭다운 메뉴 텍스트 색상 변경 */
+.dropdown-item {
+  color: #323754 !important;
+}
+
+/* 네비게이션 폰트 설정 */
+.navbar {   
+    font-family: 'Black Han Sans', sans-serif;
+}
+
+/* form 설정 */
+.form {
+    font-family: 'Orbit', sans-serif;
+    margin: 40px;
+    font-size: 20px;
+}
+
+/* form 제목 설정 */
+.titlename {
+    font-family: 'Black Han Sans', sans-serif;
+    margin: 40px;
+}

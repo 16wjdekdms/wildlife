@@ -1,0 +1,107 @@
+/* pet.pug의 css */
+
+/* 네비게이션 색 변경 */
+.container-fluid {
+    background-color: #323754;
+}
+
+/* 네비게이션 텍스트 색상 변경 */
+.navbar-brand,
+.navbar-nav .nav-link {
+  color: white !important;
+}
+
+/* 드롭다운 메뉴 텍스트 색상 변경 */
+.dropdown-item {
+  color: #323754 !important;
+}
+
+/* 네비게이션 폰트 설정 */
+.navbar {
+    font-family: 'Black Han Sans', sans-serif;
+}
+
+/* 페이지 제목 설정 */
+.titlename {
+    font-family: 'Black Han Sans', sans-serif;
+    margin: 50px;
+}
+
+/*table의 name아이디 행 글자색 변경*/
+.name {
+    color: #345119;
+}
+
+/*프로필 사진 설정*/
+.profile{
+    width: 450px;
+    height: 300px;
+    margin-top: 80px;
+    margin-bottom: 40px;
+    margin-left: 50px;
+    margin-right: 40px;
+}
+
+/* pet 그룹의 설정 */
+.pet {
+    font-family: 'Orbit', sans-serif;
+    font-size: 20px;
+    display: flex; 
+    align-items: center;
+    border: 1px solid black;
+    margin: 10px;
+}
+
+/* info_table 그룹 설정*/
+.info_table {
+    flex: 1;
+    margin-top: 30px;
+    margin-right: 30px;
+}
+
+/* 이미지 배치 설정 */
+.images-container {
+    display: flex; /*자식 요소들 가로로 나열*/
+    justify-content: space-around; /* 각 이미지를 동일한 간격으로 나열 */
+    flex-wrap: wrap; /* 너비를 벗어나는 경우 다음 행으로 */
+}
+
+/* 이미지 설정 */
+.images-container img {
+    height: 300px;
+    width: 300px; /* 각 이미지의 너비를 조정하여 1행 3열로 나열 */
+    margin-bottom: 10px; /* 이미지 사이의 간격 */
+}
+
+/* summary 그룹 설정 */
+.summary {
+    border: 1px solid rgb(48, 47, 47);
+    margin: 10px;
+}
+
+/* 글자 설정 */
+.summary strong {
+    font-family: 'Black Han Sans', sans-serif;
+    margin: 30px;
+    font-size: 30px;
+}
+
+/* 글자 설정 */
+.text {
+    font-family: 'Orbit', sans-serif;
+    margin: 30px;
+}
+
+/* pic 그룹 설정 */
+.pic {
+    border: 1px solid black;
+    margin: 10px;
+}
+
+/* 글자 설정 */
+.pic strong {
+    font-family: 'Black Han Sans', sans-serif;
+    margin: 30px;
+    font-size: 30px;
+    
+}

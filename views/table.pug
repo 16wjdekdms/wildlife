@@ -1,0 +1,68 @@
+//table.pug : 회원 가입 후 작성한 회원 정보 테이블
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title table
+        include menu.pug
+
+        link(rel='stylesheet', href='/css/style5.css')
+
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet")
+
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Orbit&display=swap" rel="stylesheet")
+
+        //부트스트랩 사용
+        link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9", crossorigin="anonymous")
+        script(src="https://code.jquery.com/jquery-3.6.4.min.js")
+        script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js")
+    body
+
+        //제목
+        div.titlename
+            p 회원가입이 완료되었습니다.
+        hr
+        div.background-container
+            //이름
+            div.information
+                //이름 변수
+                p=name+ '님의 회원정보' 
+            
+            //회원 정보 테이블
+            .table_form
+                table.table
+                    thead
+                        tr
+                            th(scope="col") 이름
+                            th(scope="col") 정보
+                            th(scope="col") 값
+                    tbody
+                        tr  
+                            //이름 변수
+                            td(rowspan = "5")= name 
+                            td Phone
+                            //전화번호 변수
+                            td= phone 
+                        tr
+                            td Address
+                            //주소 변수
+                            td= add 
+                        tr
+                            //이메일 변수
+                            td Email
+                            td= email
+                        tr
+                            //id 변수
+                            td Id
+                            td= userid
+                        tr
+                            //password 변수
+                            td Password
+                            td= userpw
+        
+

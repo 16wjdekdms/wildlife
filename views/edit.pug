@@ -1,0 +1,43 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Document
+
+        include menu.pug
+
+        link(rel='stylesheet', href='/css/style1.css')
+
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet")
+
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Orbit&display=swap" rel="stylesheet")
+
+        //부트스트랩 사용
+        link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9", crossorigin="anonymous")
+        script(src="https://code.jquery.com/jquery-3.6.4.min.js")
+        script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js")
+    body
+        h1 글 수정하기
+        .container.mt-4
+            form(action="/edit", method="post")
+                div.form-group
+                label(for="id") 제목
+                // 수정이기 때문에 이전의(원래) 값이 들어가 있어야 됨
+                // id 정보를 넘겨줘야 한다. -> id 정보를 숨겨놔야됨. 보안으로 style을 넣는다.
+                input(type="text", name="id", class="form-control", value=data._id, style="display: none;")
+                input(type="text", name="title", class="form-control", value=data.title)
+                p
+                div.form-group
+                label(for="content") 내용
+                textarea(name="content", rows='10', class="form-control")= data.content
+                p
+                div.form-group
+                label(for="someDate") 작성일
+                input(type="date", class="form-control", name="someDate", value=data.date)
+                p
+                button(type="submit", class="btn btn-warning", style="float:right") 수정

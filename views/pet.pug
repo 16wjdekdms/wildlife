@@ -1,0 +1,75 @@
+//pet.pug : 반려동물을 소개
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title My Pet
+        include menu.pug
+
+        link(rel='stylesheet', href='/css/style3.css')
+
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet")
+
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Orbit&display=swap" rel="stylesheet")
+
+        //부트스트랩 사용
+        link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9", crossorigin="anonymous")
+        script(src="https://code.jquery.com/jquery-3.6.4.min.js")
+        script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js")
+    body 
+
+        //강아지
+        div.titlename.text-center 
+            h1.display-4.mb-4 My Dog
+
+        //강아지 프로필
+        div.pet
+            //강아지 사진
+            img.profile(src="/images/dog1.jpg", alt="강아지 사진1")
+            
+            //강아지 설명 테이블
+            div.info_table
+                table.table
+                    tbody
+                        tr.name
+                            th 이름
+                            td <strong>정수동 
+                        tr
+                            th 종
+                            td 장모 치와와
+                        tr
+                            th 생년월일
+                            td 2018/09/01
+                        tr
+                            th 성별
+                            td 남
+                        tr 
+                            th 성격
+                            td 소심
+        //강아지 특징 설명
+        div.summary
+            .mb-3
+            strong 개요
+            hr
+            p.text
+                | 털이 긴 장모 치와와이다. 코가 좁고 길쭉하며, 꼬리는 북실하고 끝은 흰색이며 짧다. <br>
+                | 주둥이는 뾰족하고 흰색, 등의 전면에는 황갈색 반점이 있다. <br>
+                | 털이 길어 너무 많이 빠지기 떄문에 주기적인 관리가 필수이다. <br>
+                | 사료를 주식으로 먹지만 간식을 더 좋아하고 대부분의 음식을 선호한다. <br>
+                | 특히 사과를 좋아함. 소리에 민감하게 반응하고 산책을 좋아한다. <br>
+        
+        //강아지 사진
+        div.pic
+            .mb-3
+            div.pic_name
+                strong 사진
+            hr
+            .images-container
+                img(src="/images/dog2.jpg", alt="강아지 사진2")
+                img(src="/images/dog3.jpg", alt="강아지 사진3") 
+                img(src="/images/dog4.jpg", alt="강아지 사진4")

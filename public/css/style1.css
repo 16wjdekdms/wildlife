@@ -1,0 +1,75 @@
+/*home.pug의 css*/
+
+/* 배경 설정 */
+.background-container {
+    background-image: url('/images/배경3.jpg');
+    background-size: contain;
+}
+
+/* 이미지 설정 */
+img {
+    width: 300px;
+    height: 250px;
+    margin-top: 80px;
+    margin-bottom: 40px;
+    margin-left: 70px;
+    margin-right: 40px;
+}
+
+/* 네비게이션 텍스트 색상 변경 */
+.navbar-brand,
+.navbar-nav .nav-link {
+  color: white !important;
+}
+
+/* 드롭다운 메뉴 텍스트 색상 변경 */
+.dropdown-item {
+  color: #323754 !important;
+}
+
+/* 네비게이션 색 변경 */
+.container-fluid {
+    background-color: #323754;
+}
+
+/* 네비게이션 폰트 설정 */
+.navbar {
+    font-family: 'Black Han Sans', sans-serif !important;
+}
+
+/* 제목 설정 */
+.titlename {
+    margin: 50px;
+    font-family: 'Black Han Sans', sans-serif;
+}
+
+/* 텍스트 폰트 설정 */
+.text {
+    font-family: 'Orbit', sans-serif;
+}
+
+/* 동물 이름 설정 */
+.name {
+    display: block;
+    font-size: 20px;
+    margin-top: 70px;
+    margin-bottom: 20px;
+}
+
+/* 이미지와 텍스트 설명 요소의 배치 설정*/
+.content1 {
+    display: flex; 
+    align-items: center;
+}
+.content2 {
+    display: flex; 
+    align-items: center;
+}
+.content3 {
+    display: flex; 
+    align-items: center;
+}
+.content4 {
+    display: flex; 
+    align-items: center;
+}
